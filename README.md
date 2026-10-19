@@ -1,10 +1,10 @@
-# dsh-per-turn-stats
+# dsh-tps-ttft
 
-为 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 提供**每轮独立统计**：模型耗时、工具耗时、首 token 延迟（TTFT）、输出速度（TPS），显示在"本轮用量"面板里。
+为 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 提供**每轮 TPS / TTFT 统计**：模型耗时、工具耗时、首 token 延迟（TTFT）、输出速度（TPS），显示在"本轮用量"面板里。
 
 ## 效果
 
-<!-- TODO: 插入主人提供的截图 -->
+<!-- TODO: 插入截图 -->
 ![本轮用量面板](docs/screenshot-usage-panel.png)
 
 每轮对话结束后，点击"本轮用量"图标（数据库图标），在展开的面板里可以看到：
@@ -14,24 +14,24 @@
 - **首 token**：首 token 延迟（TTFT，step/start → 第一个 token）
 - **输出速度**：输出速度（TPS，decodeTokens / decodeMs）
 
-<!-- TODO: 插入主人提供的截图 -->
+<!-- TODO: 插入截图 -->
 ![会话统计](docs/screenshot-stats.png)
 
 ## 安装
 
 ```bash
 # 在 DSH 的 profile 目录里
-pnpm add dsh-per-turn-stats
+pnpm add dsh-tps-ttft
 ```
 
-然后在 `package.json` 的 `dsh.profile.bundles` 里加上 `dsh-per-turn-stats`：
+然后在 `package.json` 的 `dsh.profile.bundles` 里加上 `dsh-tps-ttft`：
 
 ```json
 {
   "dsh": {
     "profile": {
       "bundles": [
-        "dsh-per-turn-stats"
+        "dsh-tps-ttft"
       ]
     }
   }
