@@ -1,7 +1,7 @@
 {
-  "name": "dsh-per-turn-stats",
+  "name": "dsh-tps-ttft",
   "version": "1.0.0",
-  "description": "Per-turn statistics projection for DeepSeek Harness: model time, tool time, TTFT, and output speed per turn, shown in the Turn Usage panel.",
+  "description": "Per-turn TPS and TTFT statistics for DeepSeek Harness: model time, tool time, time-to-first-token, and output speed per turn, shown in the Turn Usage panel.",
   "type": "module",
   "exports": {
     ".": "./index.js",
@@ -24,10 +24,12 @@
     "dsh",
     "deepseek-harness",
     "plugin",
-    "projection",
-    "per-turn-stats",
+    "tps",
     "ttft",
-    "tps"
+    "per-turn-stats",
+    "projection",
+    "model-time",
+    "output-speed"
   ],
   "license": "MIT"
 }
