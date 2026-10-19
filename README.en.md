@@ -23,24 +23,26 @@ Session-level statistics:
 
 ## Installation
 
+Install directly from GitHub (pinned to a commit, recommended):
+
 ```bash
-# In your DSH profile directory
-pnpm add dsh-tps-ttft
+dsh plugin --profile <your-profile> add github:oldzhang82/dsh-tps-ttft#<commit-sha>
 ```
 
-Then add `dsh-tps-ttft` to the `dsh.profile.bundles` array in `package.json`:
+> Use the latest full SHA from the [commits page](https://github.com/oldzhang82/dsh-tps-ttft/commits/main). Pinning the commit prevents later pushes from silently changing what gets installed.
 
-```json
-{
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "dsh-tps-ttft"
-      ]
-    }
-  }
-}
-```
+**The first install will fail** (pnpm ≥10 refuses to run build scripts of git dependencies by default). Authorize it once:
+
+1. Copy the package key printed by pnpm into the profile's `pnpm-workspace.yaml`:
+
+   ```yaml
+   allowBuilds:
+     dsh-tps-ttft: true
+   ```
+
+2. Re-run the `add` command above.
+
+> This plugin is pure JS; its `prepare` script is a no-op (no build runs), so the authorization carries no real risk.
 
 Restart DSH to apply.
 
