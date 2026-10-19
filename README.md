@@ -23,24 +23,26 @@
 
 ## 安装
 
+从 GitHub 直接安装（锁定 commit，推荐）：
+
 ```bash
-# 在 DSH 的 profile 目录里
-pnpm add dsh-tps-ttft
+dsh plugin --profile <你的profile> add github:oldzhang82/dsh-tps-ttft#<commit-sha>
 ```
 
-然后在 `package.json` 的 `dsh.profile.bundles` 里加上 `dsh-tps-ttft`：
+> `<commit-sha>` 用 [仓库 commits 页](https://github.com/oldzhang82/dsh-tps-ttft/commits/main) 的最新完整 SHA。锁 commit 是为了防止后续推送悄悄改变安装内容。
 
-```json
-{
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "dsh-tps-ttft"
-      ]
-    }
-  }
-}
-```
+**第一次安装会失败**（pnpm ≥10 默认拒绝运行 git 依赖的构建脚本），按提示授权一次即可：
+
+1. 把 pnpm 打印的包键复制进该 profile 的 `pnpm-workspace.yaml`：
+
+   ```yaml
+   allowBuilds:
+     dsh-tps-ttft: true
+   ```
+
+2. 重新执行上面的 `add` 命令。
+
+> 本插件是纯 JS，`prepare` 脚本是 no-op（不执行任何构建），授权无实际风险。
 
 重启 DSH 即可。
 
