@@ -33,11 +33,11 @@ dsh plugin --profile <your-profile> add github:oldzhang82/dsh-tps-ttft#<commit-s
 
 **The first install will fail** (pnpm ≥10 refuses to run build scripts of git dependencies by default). Authorize it once:
 
-1. Copy the package key printed by pnpm into the profile's `pnpm-workspace.yaml`:
+1. Copy the package key printed by pnpm **verbatim** into the profile's `pnpm-workspace.yaml` (the key includes the full tarball URL; use pnpm's actual output):
 
    ```yaml
    allowBuilds:
-     dsh-tps-ttft: true
+     dsh-tps-ttft@https://codeload.github.com/oldzhang82/dsh-tps-ttft/tar.gz/<commit-sha>: true
    ```
 
 2. Re-run the `add` command above.
