@@ -33,11 +33,11 @@ dsh plugin --profile <你的profile> add github:oldzhang82/dsh-tps-ttft#<commit-
 
 **第一次安装会失败**（pnpm ≥10 默认拒绝运行 git 依赖的构建脚本），按提示授权一次即可：
 
-1. 把 pnpm 打印的包键复制进该 profile 的 `pnpm-workspace.yaml`：
+1. 把 pnpm 打印的包键**原样**复制进该 profile 的 `pnpm-workspace.yaml`（键带完整 tarball URL，以 pnpm 实际输出为准）：
 
    ```yaml
    allowBuilds:
-     dsh-tps-ttft: true
+     dsh-tps-ttft@https://codeload.github.com/oldzhang82/dsh-tps-ttft/tar.gz/<commit-sha>: true
    ```
 
 2. 重新执行上面的 `add` 命令。
