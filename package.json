@@ -1,7 +1,7 @@
 {
   "name": "dsh-tps-ttft",
   "version": "1.0.0",
-  "description": "Per-turn TPS and TTFT statistics for DeepSeek Harness: model time, tool time, time-to-first-token, and output speed per turn, shown in the Turn Usage panel.",
+  "description": "每轮对话的 TPS / TTFT 统计：模型耗时、工具耗时、首 token 延迟、输出速度，显示在「本轮用量」面板。",
   "type": "module",
   "scripts": {
     "prepare": "node -e \"process.exit(0)\""
