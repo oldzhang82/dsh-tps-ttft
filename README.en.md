@@ -1,10 +1,10 @@
-# dsh-per-turn-stats
+# dsh-tps-ttft
 
-Per-turn statistics projection for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): model time, tool time, time-to-first-token (TTFT), and output speed (TPS) per turn, shown in the Turn Usage panel.
+Per-turn TPS and TTFT statistics for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): model time, tool time, time-to-first-token (TTFT), and output speed (TPS) per turn, shown in the Turn Usage panel.
 
 ## What it does
 
-<!-- TODO: Insert screenshots provided by the maintainer -->
+<!-- TODO: Insert screenshots -->
 ![Turn Usage panel](docs/screenshot-usage-panel.png)
 
 After each turn completes, click the "Turn Usage" icon (database icon). The expanded panel shows:
@@ -14,24 +14,24 @@ After each turn completes, click the "Turn Usage" icon (database icon). The expa
 - **TTFT**: Time to first token (step/start → first token)
 - **Output speed**: Output speed in tokens/sec (decodeTokens / decodeMs)
 
-<!-- TODO: Insert screenshots provided by the maintainer -->
+<!-- TODO: Insert screenshots -->
 ![Session stats](docs/screenshot-stats.png)
 
 ## Installation
 
 ```bash
 # In your DSH profile directory
-pnpm add dsh-per-turn-stats
+pnpm add dsh-tps-ttft
 ```
 
-Then add `dsh-per-turn-stats` to the `dsh.profile.bundles` array in `package.json`:
+Then add `dsh-tps-ttft` to the `dsh.profile.bundles` array in `package.json`:
 
 ```json
 {
   "dsh": {
     "profile": {
       "bundles": [
-        "dsh-per-turn-stats"
+        "dsh-tps-ttft"
       ]
     }
   }
