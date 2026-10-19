@@ -1,0 +1,33 @@
+{
+  "name": "dsh-per-turn-stats",
+  "version": "1.0.0",
+  "description": "Per-turn statistics projection for DeepSeek Harness: model time, tool time, TTFT, and output speed per turn, shown in the Turn Usage panel.",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "projection",
+    "per-turn-stats",
+    "ttft",
+    "tps"
+  ],
+  "license": "MIT"
+}
