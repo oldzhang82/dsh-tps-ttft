@@ -1,0 +1,4 @@
+- insert:
+    - id: per-turn-stats
+      name: '@local/per-turn-stats'
+      config: {}
