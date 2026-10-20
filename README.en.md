@@ -25,20 +25,9 @@ dsh plugin --profile <your-profile> add github:oldzhang82/dsh-tps-ttft#<commit-s
 
 > Use the latest full SHA from the [commits page](https://github.com/oldzhang82/dsh-tps-ttft/commits/main). Pinning the commit prevents later pushes from silently changing what gets installed.
 
-**The first install will fail** (pnpm ≥10 refuses to run build scripts of git dependencies by default). Authorize it once:
+This plugin is pure JS with no build scripts, so the install does not trigger pnpm's allowBuilds prompt — one command and it's done.
 
-1. Copy the package key printed by pnpm **verbatim** into the profile's `pnpm-workspace.yaml` (the key includes the full tarball URL; use pnpm's actual output):
-
-   ```yaml
-   allowBuilds:
-     dsh-tps-ttft@https://codeload.github.com/oldzhang82/dsh-tps-ttft/tar.gz/<commit-sha>: true
-   ```
-
-2. Re-run the `add` command above.
-
-> This plugin is pure JS; its `prepare` script is a no-op (no build runs), so the authorization carries no real risk.
-
-Restart DSH to apply.
+After installing, **restart DSH**, run a turn, and the gauge-icon timing pill in the turn tail confirms success.
 
 ## How it works
 
