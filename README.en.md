@@ -6,6 +6,8 @@ Per-turn TPS and TTFT statistics for [DeepSeek Harness](https://github.com/deeps
 
 After each turn completes, a **gauge-icon timing pill** appears in the turn tail (showing model time). Click it to open a popover with the full timing statistics:
 
+![timing pill](docs/screenshot-timing-pill.png)
+
 - **Model time**: Wall-clock time for model inference (step/start → assistant/message)
 - **Tool time**: Total time for tool calls (tool/call → tool/result; hidden when no tools ran)
 - **TTFT**: Time to first token (step/start → first token)
