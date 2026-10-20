@@ -1,7 +1,7 @@
 {
   "name": "dsh-tps-ttft",
   "version": "1.0.0",
-  "description": "每轮对话的 TPS / TTFT 统计：模型耗时、工具耗时、首 token 延迟、输出速度，显示在「本轮用量」面板。 | Per-turn TPS and TTFT statistics: model time, tool time, TTFT, and output speed, shown in the Turn Usage panel.",
+  "description": "Per-turn TPS and TTFT statistics for DeepSeek Harness: model time, tool time, time-to-first-token, and output speed per turn, shown as a timing pill in the turn tail.",
   "type": "module",
   "scripts": {
     "prepare": "node -e \"process.exit(0)\""
@@ -12,14 +12,25 @@
   },
   "exports": {
     ".": "./index.js",
+    "./client": "./lib/client.js",
     "./icon": "./icon.svg"
   },
   "files": [
     "index.js",
+    "lib/client.js",
     "cordis.patch.yml",
     "icon.svg"
   ],
+  "engines": {
+    "dsh": ">=0.2.0-rc.1 <0.3.0-0"
+  },
   "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    },
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
