@@ -6,6 +6,8 @@
 
 每轮对话结束后，turn tail 里会出现一个**速度表图标的 timing 胶囊**（显示模型耗时）。点击它展开一个浮层，看到完整 timing 统计：
 
+![timing 胶囊](docs/screenshot-timing-pill.png)
+
 - **模型耗时**：模型推理的墙钟时间（step/start → assistant/message）
 - **工具耗时**：工具调用的总耗时（tool/call → tool/result，没调工具就不显示）
 - **首 token**：首 token 延迟（TTFT，step/start → 第一个 token）
