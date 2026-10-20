@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Per-turn TPS and TTFT statistics for DeepSeek Harness: model time, tool time, time-to-first-token, and output speed per turn, shown as a timing pill in the turn tail.",
   "type": "module",
-  "scripts": {
-    "prepare": "node -e \"process.exit(0)\""
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oldzhang82/dsh-tps-ttft.git"
