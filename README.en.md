@@ -1,25 +1,19 @@
 # dsh-tps-ttft
 
-Per-turn TPS and TTFT statistics for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): model time, tool time, time-to-first-token (TTFT), and output speed (TPS) per turn, shown in the Turn Usage panel.
+Per-turn TPS and TTFT statistics for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): model time, tool time, time-to-first-token (TTFT), and output speed (TPS) per turn.
 
 ## What it does
 
-After each turn completes, click the "Turn Usage" icon (database icon). The expanded panel shows timing statistics:
-
-![Turn Usage panel (with timing)](docs/screenshot-usage-panel-timing.png)
+After each turn completes, a **gauge-icon timing pill** appears in the turn tail (showing model time). Click it to open a popover with the full timing statistics:
 
 - **Model time**: Wall-clock time for model inference (step/start → assistant/message)
-- **Tool time**: Total time for tool calls (tool/call → tool/result)
+- **Tool time**: Total time for tool calls (tool/call → tool/result; hidden when no tools ran)
 - **TTFT**: Time to first token (step/start → first token)
-- **Output speed**: Output speed in tokens/sec (decodeTokens / decodeMs)
+- **Output speed**: Output speed in tokens/sec (decodeTokens / decodeMs; hidden when no data)
 
-The original token usage information is unchanged:
+**Fully self-contained**: the plugin ships its own client component (registered to the `conversation.chat.turnTail` slot). **No DSH core changes required** — install and go.
 
-![Turn Usage panel (token usage)](docs/screenshot-usage-panel.png)
-
-Session-level statistics:
-
-![Session stats](docs/screenshot-stats.png)
+The original "Turn Usage" (token usage) panel is unaffected; the two are independent.
 
 ## Installation
 
@@ -48,13 +42,18 @@ Restart DSH to apply.
 
 ## How it works
 
-This plugin registers a **session projection** (`perTurnStats`) that performs a pure fold over the session event stream:
+The plugin has two parts, **neither modifies the DSH core**:
 
-- Listens to `step/start`, `assistant/attempt`, `assistant/message`, `tool/call`, `tool/result`, and `turn/end` events
-- Accumulates model time, tool time, TTFT, and output speed per turn
-- Cleans up per-turn transient state at `turn/end` to keep the view bounded
+1. **Server side** (`index.js`): registers a **session projection** (`perTurnStats`) that performs a pure fold over the session event stream:
+   - Listens to `step/start`, `assistant/attempt`, `assistant/message`, `tool/call`, `tool/result`, and `turn/end` events
+   - Accumulates model time, tool time, TTFT, and output speed per turn
+   - Cleans up per-turn transient state at `turn/end` to keep the view bounded
 
-The projection result is displayed via DSH's core `TurnUsagePanel` component (the core code has been integrated with timing display).
+2. **Client side** (`lib/client.js`): registers a React component to the `conversation.chat.turnTail` slot, reads the `perTurnStats` projection, and renders the timing pill.
+
+## Compatibility
+
+- DSH `>=0.2.0-rc.1 <0.3.0-0` (see `engines.dsh`)
 
 ## Dependencies
 
