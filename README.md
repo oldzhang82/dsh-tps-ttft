@@ -17,7 +17,7 @@
 
 ## 安装
 
-从 GitHub 直接安装（锁定 commit，推荐）：
+从 GitHub 直接安装（一条命令，无需额外配置）：
 
 ```bash
 dsh plugin --profile <你的profile> add github:oldzhang82/dsh-tps-ttft#<commit-sha>
@@ -25,20 +25,9 @@ dsh plugin --profile <你的profile> add github:oldzhang82/dsh-tps-ttft#<commit-
 
 > `<commit-sha>` 用 [仓库 commits 页](https://github.com/oldzhang82/dsh-tps-ttft/commits/main) 的最新完整 SHA。锁 commit 是为了防止后续推送悄悄改变安装内容。
 
-**第一次安装会失败**（pnpm ≥10 默认拒绝运行 git 依赖的构建脚本），按提示授权一次即可：
+本插件是纯 JS、无构建脚本，安装不会触发 pnpm 的 allowBuilds 授权提示，一条命令装完。
 
-1. 把 pnpm 打印的包键**原样**复制进该 profile 的 `pnpm-workspace.yaml`（键带完整 tarball URL，以 pnpm 实际输出为准）：
-
-   ```yaml
-   allowBuilds:
-     dsh-tps-ttft@https://codeload.github.com/oldzhang82/dsh-tps-ttft/tar.gz/<commit-sha>: true
-   ```
-
-2. 重新执行上面的 `add` 命令。
-
-> 本插件是纯 JS，`prepare` 脚本是 no-op（不执行任何构建），授权无实际风险。
-
-重启 DSH 即可。
+装完**重启 DSH**，开一轮对话，turn tail 里出现速度表图标的 timing 胶囊即成功。
 
 ## 工作原理
 
