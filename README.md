@@ -20,9 +20,11 @@
 从 GitHub 直接安装（一条命令，无需额外配置）：
 
 ```bash
-dsh plugin --profile <你的profile> add github:oldzhang82/dsh-tps-ttft#<commit-sha>
+dsh plugin --profile <你的profile> add "github:oldzhang82/dsh-tps-ttft#<commit-sha>"
 ```
 
+> **参数要带引号**：PowerShell 里 `#` 是注释符，不加引号会把 `#` 后面的 SHA 丢掉。
+>
 > `<commit-sha>` 用 [仓库 commits 页](https://github.com/oldzhang82/dsh-tps-ttft/commits/main) 的最新完整 SHA。锁 commit 是为了防止后续推送悄悄改变安装内容。
 
 本插件是纯 JS、无构建脚本，安装不会触发 pnpm 的 allowBuilds 授权提示，一条命令装完。
