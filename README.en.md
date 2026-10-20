@@ -17,12 +17,14 @@ The original "Turn Usage" (token usage) panel is unaffected; the two are indepen
 
 ## Installation
 
-Install directly from GitHub (pinned to a commit, recommended):
+Install directly from GitHub (one command, no extra config):
 
 ```bash
-dsh plugin --profile <your-profile> add github:oldzhang82/dsh-tps-ttft#<commit-sha>
+dsh plugin --profile <your-profile> add "github:oldzhang82/dsh-tps-ttft#<commit-sha>"
 ```
 
+> **Quote the argument**: in PowerShell, `#` starts a comment, so without quotes the SHA after `#` is dropped.
+>
 > Use the latest full SHA from the [commits page](https://github.com/oldzhang82/dsh-tps-ttft/commits/main). Pinning the commit prevents later pushes from silently changing what gets installed.
 
 This plugin is pure JS with no build scripts, so the install does not trigger pnpm's allowBuilds prompt — one command and it's done.
